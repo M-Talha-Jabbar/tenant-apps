@@ -7,8 +7,8 @@ const landlord_create = (req, res) => {
 
     landlord
         .save()
-        .then(() => res.json({result: "Landlord created successfully!"}))
-        .catch(err => res.json(err));
+        .then(() => res.json({ result: "Landlord created successfully!" }))
+        .catch(err => res.status(404).json({ message: err.message }));
 };
 
 const landlord_list = (req, res) => {
