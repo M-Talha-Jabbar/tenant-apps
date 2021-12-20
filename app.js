@@ -33,6 +33,8 @@ app.use(cors()); // Enable ALL CORS Requests
 
 app.use(express.urlencoded({ extended: false }));
 
+app.use(express.json());
+
 app.use('/api/landlords', landlordRoutes);
 
 app.use('/api/tenants', tenantRoutes);
