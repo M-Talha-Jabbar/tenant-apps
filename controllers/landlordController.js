@@ -11,6 +11,13 @@ const landlord_create = (req, res) => {
         .catch(err => res.status(404).json({ message: err.message }));
 };
 
+const landlord_login = (req, res) => {
+    Landlord
+        .find({ name: req.body.name, password: req.body.password })
+        .then(data => res.json(data)) // if no match is found, stil the control will fall in 'then' block with the data equal to [] (empty).
+        .catch(err => res.json(err));
+};
+
 const landlord_list = (req, res) => {
     Landlord
         .find({})
@@ -65,5 +72,5 @@ const landlord_property_delete = (req, res) => {
 };
 
 module.exports = {
-    landlord_create, landlord_list, landlord_details, landlord_property_create, landlord_property_delete
+    landlord_create, landlord_login, landlord_list, landlord_details, landlord_property_create, landlord_property_delete
 };
