@@ -14,6 +14,8 @@ Project running on Hositing Services/Platforms(Production):
         in 1st or left operand). But if they have not set it than your application will run on port 5000.
 */
 
+const cors = require('cors');
+
 const landlordRoutes = require('./routes/landlordRoutes');
 const tenantRoutes = require('./routes/tenantRoutes');
 
@@ -26,6 +28,8 @@ mongoose.connect(dbURI)
         app.listen(PORT);
     })
     .catch(err => console.log(err));
+
+app.use(cors()); // Enable ALL CORS Requests
 
 app.use(express.urlencoded({ extended: false }));
 
